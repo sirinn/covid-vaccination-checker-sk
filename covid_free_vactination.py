@@ -23,7 +23,7 @@ def free_capacity(station):
         free =+ date['free_capacity']
     return free
 
-async def loop_executer(loop):
+async def checker(loop):
     # you could use even while True here
     while loop.is_running():
         await request()
@@ -37,6 +37,6 @@ async def healthcheck(loop):
         print("Still alive")
 
 ev_loop = asyncio.get_event_loop()
-ev_loop.create_task(loop_executer(ev_loop))
+ev_loop.create_task(checker(ev_loop))
 ev_loop.create_task(healthcheck(ev_loop))
 ev_loop.run_forever()
